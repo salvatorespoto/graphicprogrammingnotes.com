@@ -49,7 +49,7 @@ Figure 1 shows the output of the following function of two variables:
 
 $$f(x,y) = \frac{1}{r}$$ 
 
-where r is the **distance from the orgin**, computed as $r=\sqrt{x^2+y^2}$. The higher values are the brighter pixels, that become darker as the distance from $(0,0)$ increase.
+where r is the **distance from the orgin**, computed as $r=\sqrt{x^2+y^2}$. The higher values are the brighter pixels, that become darker as the distance from $(0,0)$ increases.
 The output of such function it's called a **scalar field**. 
 
 <br />
