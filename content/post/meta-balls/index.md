@@ -45,11 +45,11 @@ In this page you'll find shaders written with [Shadertoy](https://shadertoy.com/
 <br />
 
 ## Isolines of a scalar field 
-Figure 1 show the output of the function of two variables:
+Figure 1 shows the output of the following function of two variables:
 
 $$f(x,y) = \frac{1}{r}$$ 
 
-where r is the **distance from the orgin**, computed as $r=\sqrt{x^2+y^2}$. The higher values are the brighter pixels, that become darker as the distance from $(0,0)$ increase.
+where r is the **distance from the orgin**, computed as $r=\sqrt{x^2+y^2}$. The higher values are the brighter pixels, that become darker as the distance from $(0,0)$ increases.
 The output of such function it's called a **scalar field**. 
 
 <br />
@@ -60,14 +60,13 @@ One scalar field | The metaball |Two fields summed | The metaball
 
 Now we can already give the definition:
 
->*The metaball is the portion of the scalar field where its value is above a threshold.*
+>*The metaball is the portion of the scalar field where the values are above a threshold.*
 
-Figure 2 shows in blue the pixels with the value of the threshold we choose, this is called an **isoline**. 
-All the pixel **inside the isolines** are the metaball.
+In Figure 2 the blue pixels have a value equal to the threshold. The blue line is called an **isoline** and all the pixel **inside the isolines** are the metaball.
 
-**Translating** the function a bit on the left and adding another equal on its right (Figure 3), generate a scalar field that is the **sum of both**, and a new isoline.
+**Translating** the function on the left and adding another equal on its right (Figure 3), generates a scalar field that is the **sum of both**, and a new isoline.
 
-Moving one function respect the other will result in a countinous change of the isolines, that "glue togher" when they came close, as shown in the following shader:
+Moving one function respect to the other will make the isolines change continuously, and "glue togheter" when they came close, as shown in the following shader:
 
 <p><iframe width="100%" height="360" frameborder="0" src="https://www.shadertoy.com/embed/7tGyDR?gui=true&t=10&paused=false&muted=false" allowfullscreen></iframe><p/>
 
@@ -78,27 +77,27 @@ Changing the threshold will make the isolines "bigger" or "smaller".
 ## The falloff function
 $f(x,y) = \frac{1}{r}$ is **inversely proportional** to the distance from the origin. For this reason we'll call it the **falloff**.
 
-This particular funciton isn't the best choiche for some reasons:
+This particular function isn't the best choiche for some reasons:
 
 * it's $+\infty$ in the origin, so we have to **clamp** it
-* there is a **division** that is expensive (at least on old hardware :))
+* uses a **division** that is expensive (at least on old hardware :))
 * never became zero, so we have always sum up all the functions to compute the field, no matter how far
 
-The following Desmos graph shows in the falloff in one dimension, as function of the distance from the origin $r$. In *red* the previous one and in **blue** the clamped version.
+The following Desmos graph shows some falloff in one dimension, as function of the distance from the origin $r$. In *red* the previous one and in **blue** the clamped version.
 
-Actually we will use the **green** one, a **cubic polynomial** $f(r) = 1-(3r^2-2r^3)$, where $(3r^2-2r^3)$ is also known as the **smoothstep** function.
+Actually we will use the **green** one, the **cubic polynomial** $f(r) = 1-(3r^2-2r^3)$. $(3r^2-2r^3)$ is also known as the **smoothstep** function.
 
 <p><iframe src="https://www.desmos.com/calculator/xllx6tmhdx" width="100%" height="300" style="border: 1px solid #ccc" frameborder=0></iframe></p>
 	
-Using the cubic we can ignore functions that are farther that the falloff lenght, avoid division and any discontinuity.
+Using the cubic we can ignore functions that are farther than the falloff lenght, avoid division and any discontinuity.
 
-The lenght of the falloff can be changed multipling the falloff argument for a value $a>0$ to increase the size of the metaballs, or $a<0$ to decrease it. (i.e. computing $f(ar)$);
+The lenght of the falloff can be changed multipling the falloff argument for a value $a>0$ to increase the size of the metaballs, or $a<0$ to decrease it. (i.e. computing $f(\frac{r}{a})$);
 
 <br />
 
 ## ShaderToy code 
-Finally this is the code that implement the previous shader, you can also click on the shader title and make you experiments directly in ShaderToy, to see the result in real time. 
-I added comments that explain the code in detail.
+Finally this is the code that implements the previous shader, you can also click on the shader title and make your experiments in ShaderToy, and see the results in real time.
+I added some comments that explain the code in detail.
 
 ```glsl
 // This function is called for each pixel
@@ -168,7 +167,7 @@ You can even experiment changing the falloff function. And more ...
 
 <br />
 
-*This is all for the 2D metaballs, in the next article we'll se how to render 3D metaballs !!*
+*This is all for the 2D metaballs, in the next article we'll se how to render 3D metaballs !! See you soon.*
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
