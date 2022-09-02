@@ -12,7 +12,7 @@ featureImage: "featured.png" # Sets featured image on blog post.
 featureImageAlt: 'Example of metaballs rendering in 3D' # Alternative text for featured image.
 featureImageCap: 'Example of metaballs rendering in 3D.' # Caption (optional).
 thumbnail: "thumbnail.png" # Sets thumbnail image appearing inside card on homepage.
-shareImage: "/images/path/share.png" # Designate a separate image for social media sharing.
+shareImage: "thumbnail.png" # Designate a separate image for social media sharing.
 codeMaxLines: 50 # Override global value for how many lines within a code block before auto-collapsing.
 codeLineNumbers: false # Override global value for showing of line numbers within code block.
 figurePositionShow: true # Override global value for showing the figure label.
